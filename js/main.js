@@ -10,6 +10,11 @@ var __main = function() {
     var store = new Store('todo')
     var model = new Model(store)
     var controller = new Controller(view, model)
+    bindEvent(window, 'load', function() {
+        model.loadTodo(function(todos) {
+            view.insertTodos(todos)
+        })
+    })
 }
 
 __main()

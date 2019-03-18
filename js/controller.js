@@ -32,7 +32,6 @@ Controller.prototype.todoListDelegate = function() {
         } else {
             var todo = view.todoFromTarget(target)
             method += 'Todo'
-            log(method)
             self[method](todo)
         }
     })

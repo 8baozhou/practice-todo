@@ -28,4 +28,9 @@ Model.prototype.updateTodo = function(todo, callback) {
     callback(result)
 }
 
+Model.prototype.loadTodo = function(callback) {
+    var todos = this.store.load()
+    callback(todos)
+}
+
 export default Model

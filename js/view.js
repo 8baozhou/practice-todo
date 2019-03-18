@@ -53,6 +53,15 @@ View.prototype.insertTodo = function(todo) {
     this.todoList.appendChild(t)
 }
 
+View.prototype.insertTodos = function(todos) {
+    var frag = document.createDocumentFragment()
+    for(var i = 0; i < todos.length; i++) {
+        var t = this.template.todo(todos[i])
+        frag.appendChild(t)
+    }
+    this.todoList.appendChild(frag)
+}
+
 View.prototype.editTodo = function(target) {
     var cell = target.closest('.todo-cell')
     var span = q('span', cell)
