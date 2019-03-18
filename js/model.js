@@ -4,18 +4,18 @@ var TodoModel = function(task) {
     this.task = task
 }
 
-var Model = function() {
-    
+var Model = function(store) {
+    this.store = store
 }
 
 Model.prototype.addTodo = function(task, callback) {
     var todo = new TodoModel(task)
-    this.save(todo)
+    this.store.add(todo)
     callback(todo)
 }
 
-Model.prototype.save = function(todo) {
-    log('modelSave:', todo)
+Model.prototype.removeTodo = function(id) {
+    
 }
 
 export default Model
