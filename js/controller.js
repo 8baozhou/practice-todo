@@ -6,6 +6,7 @@ var Controller = function(view, model) {
 
 Controller.prototype.bindAll = function() {
     this.addTodo()
+    this.todoListDelegate()
 }
 
 Controller.prototype.addTodo = function() {
@@ -26,11 +27,12 @@ Controller.prototype.todoListDelegate = function() {
     var view = this.view
     var self = this
     view.todoListDelegate(function(target, method) {
-        if(method == 'eidt') {
-            view.eidtTodo(target)
+        if(method == 'edit') {
+            view.editTodo(target)
         } else {
             var todo = view.todoFromTarget(target)
             method += 'Todo'
+            log(method)
             self[method](todo)
         }
     })

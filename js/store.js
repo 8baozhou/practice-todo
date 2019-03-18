@@ -25,4 +25,36 @@ Store.prototype.load = function() {
     return this.cahced.slice()
 }
 
+Store.prototype.remove = function(id) {
+    var index = this.indexOf(id)
+    if(index != -1) {
+        this.cahced.splice(index, 1)
+        this.save()
+        return id
+    }
+    return false
+}
+
+Store.prototype.update = function(todo) {
+    var index = this.indexOf(todo.id)
+    if(index != -1) {
+        for(var k in todo) {
+            this.cahced[index][k] = todo[k]
+        }
+        this.save()
+        return todo
+    }
+    return false
+}
+
+Store.prototype.indexOf = function(id) {
+    for(var i = 0; i < this.cahced.length; i++) {
+        var item = this.cahced[i]
+        if (item.id == id) {
+            return i
+        }
+    }
+    return -1
+}
+
 export default Store

@@ -14,8 +14,18 @@ Model.prototype.addTodo = function(task, callback) {
     callback(todo)
 }
 
-Model.prototype.removeTodo = function(id) {
-    
+Model.prototype.removeTodo = function(id, callback) {
+    var result = {}
+    result.state = (this.store.remove(id) == id)
+    result.id = id
+    callback(result)
+}
+
+Model.prototype.updateTodo = function(todo, callback) {
+    var result = {}
+    result.state = (this.store.update(todo) == todo)
+    result.todo = todo
+    callback(result)
 }
 
 export default Model
