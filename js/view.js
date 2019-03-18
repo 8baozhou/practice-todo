@@ -18,6 +18,17 @@ View.prototype.addTodo = function(callback) {
     })
 }
 
+View.prototype.todoListDelegate = function(callback) {
+    var list = this.todoList
+    bindEvent(list, 'click', function(event) {
+        var target = event.target
+        var method = target.dataset.method
+        if(method != undefined) {
+            callback(target, method)
+        }
+    })
+}
+
 View.prototype.clearInput = function() {
     this.input.value = ''
 }
